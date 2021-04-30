@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -11,72 +12,56 @@ import java.util.Arrays;
  **/
 public class No406 {
 
-    class Node {
-        int h;
-        int k;
-        Node pre;
-        Node next;
-
-        Node(int h, int k) {
-            this.h = h;
-            this.k = k;
-        }
-    }
-
     public int[][] reconstructQueue(int[][] people) {
         int len = people.length;
         if (len <= 1) {
             return people;
         }
-        // 根据第二个升序，根据第一个降序
+        // 按照第一位降序，第二位升序
         Arrays.sort(people, (a, b) -> {
-            if (a[1] == b[1]) {
-                return b[0] - a[0];
-            } else {
+            if (a[0] == b[0]) {
                 return a[1] - b[1];
+            } else {
+                return b[0] - a[0];
             }
         });
 
-        Node head = new Node(people[0][0], people[0][1]);
+        for (int[] person : people) {
+            System.out.print("(" + person[0] + "," + person[1] + ")");
+        }
+        System.out.println();
+        System.out.println("=====");
 
+        ArrayList<int[]> temp = new ArrayList<>();
+        for (int[] person : people) {
+            temp.add(person[1], person);
+        }
 
-        for (int i = 1; i < len; i++) {
-            Node now = new Node(people[i][0], people[i][1]);
-            Node finder = head;
-            int counter = 0;
-            while (finder != null) {
-                if (counter >= now.k) {
-                    break;
-                }
-                if (finder.h >= now.h) {
-                    counter++;
-                }
-                finder = finder.next;
-            }
-            // 在当前finder位置之前插入节点。
-            if (finder.pre == null) {
-                now.next = finder;
-            } else {
-                finder.pre.next = now;
-                now.next = finder;
-            }
-            head = now;
-
-            System.out.println("he");
+        for (int[] person : temp) {
+            System.out.print("(" + person[0] + "," + person[1] + ")");
 
         }
-        System.out.println("he");
 
-
-        return null;
+        int[][] res = new int[len][];
+        for (int i = 0; i < len; i++) {
+            res[i] = temp.get(i);
+        }
+        return res;
     }
 
     @DataProvider(name = "cases")
     public Object[][] cases() {
         Object[][] data = {
-                //
-                {new int[][]{{4, 0}, {5, 0}, {6, 0}, {2, 2}, {3, 2}, {1, 4}}, new int[][]{{1, 2}}},
-//                {new int[][]{{6, 0}, {5, 0}, {4, 0}, {1, 4}, {3, 2}, {2, 2}}, new int[][]{{1, 2}}},
+                {new int[][]{{4, 0}, {5, 0}, {6, 0}, {2, 2}, {3, 2}, {1, 4}},
+                        new int[][]{{4, 0}, {5, 0}, {2, 2}, {3, 2}, {1, 4}, {6, 0}}},
+                {new int[][]{{4, 0}},
+                        new int[][]{{4, 0}}},
+                {new int[][]{{7, 0}, {4, 4}, {7, 1}, {5, 0}, {6, 1}, {5, 2}},
+                        new int[][]{{5, 0}, {7, 0}, {5, 2}, {6, 1}, {4, 4}, {7, 1}}
+                },
+                {new int[][]{{9, 0}, {7, 0}, {1, 9}, {3, 0}, {2, 7}, {5, 3}, {6, 0}, {3, 4}, {6, 2}, {5, 2}},
+                        new int[][]{{3, 0}, {6, 0}, {7, 0}, {5, 2}, {3, 4}, {5, 3}, {6, 2}, {2, 7}, {9, 0}, {1, 9}}}
+
         };
         return data;
     }
@@ -85,7 +70,9 @@ public class No406 {
     @Test(description = "单测", dataProvider = "cases")
     public void test(int[][] points, int[][] res) throws Exception {
         int[][] result = reconstructQueue(points);
-        Assert.assertEquals(res, result, "预期输出：" + res + "\n实际输出:" + result);
+        for (int i = 0; i < points.length; i++) {
+            Assert.assertEquals(result[i], res[i]);
+        }
     }
 
 }
