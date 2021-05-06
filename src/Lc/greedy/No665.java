@@ -1,4 +1,4 @@
-package Lc;
+package Lc.greedy;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;

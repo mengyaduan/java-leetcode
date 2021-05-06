@@ -1,12 +1,10 @@
-package Lc;
+package Lc.greedy;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * @see <a href="https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/</a>
