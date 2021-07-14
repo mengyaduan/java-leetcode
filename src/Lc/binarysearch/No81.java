@@ -14,8 +14,6 @@ public class No81 {
 
     /**
      * 解题思路：
-     * 1. 二分法找到临界点
-     * 2. 再次二分找到target是否在其中
      **/
 
     public boolean search(int[] nums, int target) {
