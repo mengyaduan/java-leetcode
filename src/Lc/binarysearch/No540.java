@@ -74,6 +74,7 @@ public class No540 {
                 {new int[]{3, 3, 7, 7, 10, 11, 11}, 10},
                 {new int[]{3, 3, 7}, 7},
                 {new int[]{3, 7, 7}, 3},
+                {new int[]{3}, 3},
 
         };
         return data;
