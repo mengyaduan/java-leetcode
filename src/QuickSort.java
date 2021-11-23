@@ -43,7 +43,7 @@ public class QuickSort {
     }
 
     /**
-     * 左闭右闭的上下限
+     * 左闭右开的上下限
      **/
     public void quickSortHalfClose(int[] nums, int l, int r) {
         int i = l;
