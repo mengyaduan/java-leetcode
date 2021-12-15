@@ -22,6 +22,7 @@ public class No540 {
     public int singleNonDuplicate(int[] nums) {
         if (nums.length == 1) {
             return nums[0];
+
         }
         int left = 0;
         int right = 1;
