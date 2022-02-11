@@ -79,13 +79,51 @@ public class QuickSort {
     }
 
 
+    public void qsLR(int[] nums, int l, int r) {
+        if (l >= r - 1) {
+            return;
+        }
+        int i = l;
+        int j = r - 1;
+        int key = nums[i];
+        while (i < j) {
+            while (i < j && nums[j] >= key) {
+                j--;
+            }
+            if (i >= j) {
+                continue;
+            } else {
+                nums[i] = nums[j];
+                i++;
+            }
+            while (i < j && nums[i] <= key) {
+                i++;
+            }
+            if (i >= j) {
+                continue;
+            } else {
+                nums[j] = nums[i];
+                j--;
+            }
+        }
+        nums[i] = key;
+        for (int item : nums) {
+            System.out.print(item + " ");
+        }
+        System.out.println();
+        qsLR(nums, l, i);
+        qsLR(nums, i + 1, r);
+
+    }
+
     @Test(description = "")
     public void test() throws Exception {
         int[] nums = new int[]{5, 3, 7, 6, 4, 1, 0, 2, 9, 10, 8};
-        System.out.println("左闭右闭");
-        quickSortDoubleClose(nums, 0, nums.length - 1);
+//        System.out.println("左闭右闭");
+//        quickSortDoubleClose(nums, 0, nums.length - 1);
         System.out.println("左闭右开");
-        quickSortHalfClose(nums, 0, nums.length);
+//        quickSortHalfClose(nums, 0, nums.length);
+        qsLR(nums, 0, nums.length);
 
     }
 }
