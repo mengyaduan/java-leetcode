@@ -67,6 +67,26 @@ public class No240 {
         return false;
     }
 
+
+    public boolean searchMatrixBasic(int[][] matrix, int target) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        // 查询上限
+        int wall = n;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < wall; j++) {
+                if (matrix[i][j] == target) {
+                    return true;
+                }
+                if (matrix[i][j] > target) {
+                    wall = j;
+                    break;
+                }
+            }
+        }
+        return false;
+    }
+
     /**
      * 获取对角线上的数据，即使不够方阵，也用无穷大填充
      *
@@ -141,6 +161,7 @@ public class No240 {
     public void test(int index, int[][] matrix, int target, boolean expected) {
         System.out.println(index);
         boolean res = searchMatrix(matrix, target);
+        res = searchMatrixBasic(matrix, target);
         Assert.assertEquals(res, expected);
     }
 }
