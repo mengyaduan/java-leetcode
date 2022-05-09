@@ -13,61 +13,48 @@ public class No131 {
 
     public List<List<String>> partition(String s) {
         List<List<String>> res = new ArrayList<>();
-        List<List<String>> draft = doSplit(s);
-        for (List<String> list : draft) {
-            boolean flag = true;
-            for (String item : list) {
-                if (!isPalindrome(item)) {
-                    flag = false;
-                    break;
-                }
-            }
-            if (flag) {
-                res.add(list);
-            }
-        }
+        int len = s.length();
+        int[][] memo = new int[len][len];
+        List<String> tmp = new ArrayList<>();
+        dfs(tmp, res, memo, 0, s);
         return res;
     }
 
-    public List<List<String>> doSplit(String s) {
-        List<List<String>> res = new ArrayList<>();
+    public void dfs(List<String> tmp, List<List<String>> res, int[][] memo, int start, String s) {
+        if (start == s.length()) {
+            List<String> x = new ArrayList<>();
+            for (String m : tmp) {
+                x.add(m);
+            }
+            res.add(x);
+            return;
+        }
+        for (int i = start; i < s.length(); i++) {
+            if (memo[start][i] == 1 || isPalindrome(s, start, i, memo)) {
+                tmp.add(s.substring(start, i + 1));
+                dfs(tmp, res, memo, i + 1, s);
+                tmp.remove(tmp.size() - 1);
+            }
+        }
+    }
+
+
+    public boolean isPalindrome(String s, int l, int r, int[][] memo) {
         if (s.length() == 1) {
-            List<String> tmp = new ArrayList<>();
-            tmp.add(s);
-            res.add(tmp);
-            return res;
+            memo[l][r] = 1;
+            return true;
         }
-        List<List<String>> child = doSplit(s.substring(1));
-        // 首先自己跟child隔离
-        for (int i = 0; i < child.size(); i++) {
-            List<String> father = new ArrayList<>();
-            father.add(s.substring(0, 1));
-            father.addAll(child.get(i));
-            res.add(father);
-        }
-        // 拼装
-        for (int i = 0; i < child.size(); i++) {
-            String head = s.substring(0, 1);
-            String tail = child.get(i).get(0);
-            List<String> father = new ArrayList<>();
-            father.add(head + tail);
-            child.get(i).remove(0);
-            father.addAll(child.get(i));
-            res.add(father);
-        }
-        return res;
-    }
-
-    public boolean isPalindrome(String s) {
-        int i = 0;
-        int j = s.length() - 1;
-        while (i < j) {
-            if (s.charAt(i) != s.charAt(j)) {
+        int left = l;
+        int right = r;
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
+                memo[l][r] = 2;
                 return false;
             }
-            i++;
-            j--;
+            left++;
+            right--;
         }
+        memo[l][r] = 1;
         return true;
     }
 
@@ -76,7 +63,7 @@ public class No131 {
     public Object[][] unit() {
         Object[][] data = {
                 //
-
+                {"aab"},
                 {"ab"},
                 {"efe"},
                 {"abbc"},
@@ -87,12 +74,33 @@ public class No131 {
 
 
     @Test(description = "", dataProvider = "unit")
-    public void test(String s) throws Exception {
+    public void testUnit(String s) throws Exception {
         System.out.println("s=" + s);
         List<List<String>> x = partition(s);
         for (int i = 0; i < x.size(); i++) {
             System.out.println(x.get(i));
         }
         System.out.println("=========================");
+    }
+
+    @Test(description = "")
+    public void test() throws Exception {
+        List<String> x = new ArrayList<>();
+        x.add("1");
+        x.add("2");
+        x.add("3");
+        x.add("4");
+        x.add("5");
+        System.out.println(x.size());
+        System.out.println(x.subList(0, 4));
+        System.out.println(x.size());
+        System.out.println(x);
+        x = x.subList(0, 3);
+        System.out.println(x.size());
+        System.out.println(x);
+        x = x.subList(0, 2);
+        System.out.println(x.size());
+        System.out.println(x);
+
     }
 }
