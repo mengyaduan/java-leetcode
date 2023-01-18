@@ -65,19 +65,4 @@ public class No140 {
         }
     }
 
-    @Test(description = "")
-    public void test2() throws Exception {
-        String s = "catsanddog";
-        List<String> dict = new ArrayList<>(Arrays.asList("cat", "cats", "and", "sand", "dog"));
-        wordBreak(s, dict);
-        System.out.println(res);
-
-    }
-
-    @Test(description = "")
-    public void testlkajf() throws Exception {
-        String x = "123";
-        System.out.println(x.substring(4));
-
-    }
 }
