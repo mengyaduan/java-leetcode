@@ -37,9 +37,9 @@ public class No139 {
         }
         String word = s.substring(i, j);
         if (wordDict.contains(word)) {
-            res = res || dp(s, j, j + 1, wordDict) || dp(s, i, j + 1, wordDict);
+            res = dp(s, j, j + 1, wordDict) || dp(s, i, j + 1, wordDict);
         } else {
-            res = res || dp(s, i, j + 1, wordDict);
+            res = dp(s, i, j + 1, wordDict);
         }
         memo[i][j] = res ? 1 : 0;
         return res;
