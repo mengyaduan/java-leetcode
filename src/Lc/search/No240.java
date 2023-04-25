@@ -9,7 +9,28 @@ import org.testng.annotations.Test;
  **/
 public class No240 {
 
+
     public boolean searchMatrix(int[][] matrix, int target) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int i = 0;
+        int j = n - 1;
+        boolean res = false;
+        while (i < m && j >= 0) {
+            if (matrix[i][j] == target) {
+                return true;
+            }
+            if (matrix[i][j] > target) {
+                j -= 1;
+            } else {
+                i += 1;
+            }
+        }
+        return res;
+    }
+
+
+    public boolean searchMatrixSlow(int[][] matrix, int target) {
         int m = matrix.length;
         int n = matrix[0].length;
         // 选择m，n中最长的进行扩展
@@ -161,7 +182,7 @@ public class No240 {
     public void test(int index, int[][] matrix, int target, boolean expected) {
         System.out.println(index);
         boolean res = searchMatrix(matrix, target);
-        res = searchMatrixBasic(matrix, target);
+//        res = searchMatrixBasic(matrix, target);
         Assert.assertEquals(res, expected);
     }
 }
