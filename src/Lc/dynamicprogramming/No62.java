@@ -26,11 +26,8 @@ public class No62 {
     }
 
     public int dp(int m, int n) {
-        if (m == 2) {
-            return n;
-        }
-        if (n == 2) {
-            return m;
+        if (m == 2 || n == 2) {
+            return m == 2 ? n : m;
         }
         if (m == 1 || n == 1) {
             return 1;
@@ -54,6 +51,8 @@ public class No62 {
         Object[][] data = {
                 {3, 7, 28},
                 {2, 3, 3},
+                {3, 3, 6},
+                {4, 4, 20},
                 {1, 10, 1},
         };
         return data;
