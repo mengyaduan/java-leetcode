@@ -9,11 +9,10 @@ import org.testng.annotations.Test;
  **/
 public class No518 {
 
-    int[][] memo;
 
     public int change(int amount, int[] coins) {
         int n = coins.length;
-        memo = new int[n + 1][amount + 1];
+        int[][] memo = new int[n + 1][amount + 1];
         for (int j = 0; j <= amount; j++) {
             memo[0][j] = 0;
         }
