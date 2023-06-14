@@ -10,12 +10,14 @@ import java.util.Arrays;
  * @see <a href="https://leetcode.com/problems/freedom-trail/">辐射4：自由之路</a>
  **/
 public class No514 {
-    int[][] memo;
+    int[][][] memo;
 
     public int findRotateSteps(String ring, String key) {
-        memo = new int[ring.length()][key.length()];
-        for (int[] row : memo) {
-            Arrays.fill(row, -1);
+        memo = new int[ring.length()][key.length()][3];
+        for (int[][] row : memo) {
+            for (int[] row1 : row) {
+                Arrays.fill(row1, -1);
+            }
         }
 
         return dp(ring, 0, key, 0, 0);
@@ -29,8 +31,8 @@ public class No514 {
         if (j >= key.length()) {
             return 0;
         }
-        if (memo[i][j] != -1) {
-            return memo[i][j];
+        if (memo[i][j][turnType] != -1) {
+            return memo[i][j][turnType];
         }
         int stepThisRound = 0;
         if (ring.charAt(i) == key.charAt(j)) {
@@ -43,26 +45,29 @@ public class No514 {
             int turnUnClock = stepThisRound + dp(ring, (i + 1) % ring.length(), key, j + 1, 0);
             int turnClock = stepThisRound + dp(ring, (i + ring.length() - 1) % ring.length(), key, j + 1, 0);
             int stay = 1 + dp(ring, i, key, j + 1, 0);
-            memo[i][j] = turnClock < turnUnClock ? turnClock : turnUnClock;
-            memo[i][j] = memo[i][j] < stay ? memo[i][j] : stay;
-
+            memo[i][j][0] = turnClock < turnUnClock ? turnClock : turnUnClock;
+            memo[i][j][0] = memo[i][j][0] < stay ? memo[i][j][0] : stay;
+            memo[i][j][1] = memo[i][j][0];
+            memo[i][j][2] = memo[i][j][0];
         } else {
             stepThisRound++;
             if (turnType == 0) {
                 int turnClock = stepThisRound + dp(ring, (i + ring.length() - 1) % ring.length(), key, j, 1);
                 int turnUnClock = stepThisRound + dp(ring, (i + 1) % ring.length(), key, j, 2);
-                memo[i][j] = turnClock < turnUnClock ? turnClock : turnUnClock;
+                memo[i][j][0] = turnClock < turnUnClock ? turnClock : turnUnClock;
+                memo[i][j][1] = memo[i][j][0];
+                memo[i][j][2] = memo[i][j][0];
             }
             if (turnType == 1) {
                 int turnClock = stepThisRound + dp(ring, (i + ring.length() - 1) % ring.length(), key, j, 1);
-                memo[i][j] = turnClock;
+                memo[i][j][1] = turnClock;
             }
             if (turnType == 2) {
                 int turnUnClock = stepThisRound + dp(ring, (i + 1) % ring.length(), key, j, 2);
-                memo[i][j] = turnUnClock;
+                memo[i][j][2] = turnUnClock;
             }
         }
-        return memo[i][j];
+        return memo[i][j][turnType];
     }
 
     @DataProvider(name = "cases")
