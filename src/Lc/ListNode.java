@@ -40,6 +40,9 @@ public class ListNode {
     }
 
 
+    /**
+     * Note: 如果有环，会陷入死循环！
+     **/
     @Override
     public String toString() {
         ListNode cur = this;
