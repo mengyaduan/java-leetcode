@@ -4,15 +4,13 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-
 /**
  * @see <a href="https://leetcode.com/problems/add-strings/description/">字符数字相加</a>
  **/
 public class No415 {
 
     public String addStrings(String num1, String num2) {
-        ArrayList<Integer> reverseRes = new ArrayList<>();
+        StringBuilder res = new StringBuilder();
         int i = num1.length() - 1;
         int j = num2.length() - 1;
         int flag = 0;
@@ -20,30 +18,26 @@ public class No415 {
         while (i >= 0 && j >= 0) {
             int s = num1.charAt(i) - '0' + num2.charAt(j) - '0' + flag;
             flag = s / 10;
-            reverseRes.add(s % 10);
+            res.append(s % 10);
             i--;
             j--;
         }
         while (j >= 0) {
             int s = num2.charAt(j) - '0' + flag;
             flag = s / 10;
-            reverseRes.add(s % 10);
+            res.append(s % 10);
             j--;
         }
         while (i >= 0) {
             int s = num1.charAt(i) - '0' + flag;
             flag = s / 10;
-            reverseRes.add(s % 10);
+            res.append(s % 10);
             i--;
         }
         if (flag == 1) {
-            reverseRes.add(1);
+            res.append(1);
         }
-        StringBuilder res = new StringBuilder();
-        for (int k = reverseRes.size() - 1; k >= 0; k--) {
-            res.append(reverseRes.get(k));
-        }
-        return res.toString();
+        return res.reverse().toString();
     }
 
 
@@ -55,7 +49,7 @@ public class No415 {
                 {"123", "759", ""},
                 {"163", "751", ""},
                 {"183", "759", ""},
-                
+
                 {"1231231", "759", ""},
                 {"1231231", "98239283", ""},
                 {"99999", "1", ""},
