@@ -1,6 +1,6 @@
 package Lc.backtrack;
 
-import Lc.TreeNode;
+import DataStruct.TreeNode;
 import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.Test;
 

@@ -1,6 +1,6 @@
 package notes;
 
-import Lc.ListNode;
+import DataStruct.ListNode;
 import org.testng.annotations.Test;
 
 /**

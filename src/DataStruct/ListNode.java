@@ -1,4 +1,4 @@
-package Lc;
+package DataStruct;
 
 import org.apache.commons.lang3.StringUtils;
 

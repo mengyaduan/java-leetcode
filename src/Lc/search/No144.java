@@ -1,6 +1,6 @@
 package Lc.search;
 
-import Lc.TreeNode;
+import DataStruct.TreeNode;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;

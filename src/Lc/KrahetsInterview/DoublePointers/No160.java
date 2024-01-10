@@ -1,6 +1,6 @@
 package Lc.KrahetsInterview.DoublePointers;
 
-import Lc.ListNode;
+import DataStruct.ListNode;
 import org.testng.annotations.Test;
 
 /**

@@ -1,5 +1,6 @@
 package Lc.search;
 
+import DataStruct.TreeNode;
 import org.testng.annotations.Test;
 
 /**

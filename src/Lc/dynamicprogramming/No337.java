@@ -1,6 +1,6 @@
 package Lc.dynamicprogramming;
 
-import Lc.TreeNode;
+import DataStruct.TreeNode;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;

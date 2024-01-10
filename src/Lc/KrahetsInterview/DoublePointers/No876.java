@@ -1,11 +1,11 @@
 package Lc.KrahetsInterview.DoublePointers;
 
-import Lc.ListNode;
+import DataStruct.ListNode;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static Lc.ListNode.createListNode;
+import static DataStruct.ListNode.createListNode;
 
 /**
  * @see <a href="https://leetcode.com/problems/middle-of-the-linked-list/description/">找到链表的中点</a>

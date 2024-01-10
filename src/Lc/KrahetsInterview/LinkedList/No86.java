@@ -1,10 +1,10 @@
 package Lc.KrahetsInterview.LinkedList;
 
-import Lc.ListNode;
+import DataStruct.ListNode;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static Lc.ListNode.createListNode;
+import static DataStruct.ListNode.createListNode;
 
 /**
  * @see <a href="https://leetcode.com/problems/partition-list/description/">分隔链表</a>

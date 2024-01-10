@@ -1,10 +1,10 @@
 package Lc.KrahetsInterview.LinkedList;
 
-import Lc.ListNode;
+import DataStruct.ListNode;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static Lc.ListNode.createListNode;
+import static DataStruct.ListNode.createListNode;
 
 /**
  * @see <a href="https://leetcode.com/problems/reverse-linked-list/description/">反转列表</a>

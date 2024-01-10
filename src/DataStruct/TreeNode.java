@@ -1,4 +1,4 @@
-package Lc;
+package DataStruct;
 
 public class TreeNode {
     public int val;

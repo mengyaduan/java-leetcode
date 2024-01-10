@@ -1,6 +1,6 @@
 package Lc.KrahetsInterview.DoublePointers;
 
-import Lc.ListNode;
+import DataStruct.ListNode;
 
 /**
  * @see <a href="https://leetcode.com/problems/linked-list-cycle-ii/">环形链表</a>
