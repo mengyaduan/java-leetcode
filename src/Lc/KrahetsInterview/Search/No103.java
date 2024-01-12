@@ -12,32 +12,43 @@ import java.util.List;
 import static DataStruct.tools.createTree;
 
 /**
- * @see <a href="https://leetcode.com/problems/binary-tree-level-order-traversal/description/">二叉树层序遍历</a>
+ * @see <a href="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/">锯齿形遍历二叉树</a>
  **/
-public class No102 {
+public class No103 {
     List<List<Integer>> result = new ArrayList<>();
 
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         Deque<TreeNode> helper = new ArrayDeque<>();
         Deque<TreeNode> subHelper = new ArrayDeque<>();
         if (root == null) {
             return result;
         }
+        boolean left2right = true;
         helper.add(root);
         while (!helper.isEmpty()) {
             ArrayList<Integer> layer = new ArrayList<>();
-            // 遍历一层
             while (!helper.isEmpty()) {
-                TreeNode item = helper.pollFirst();
+                TreeNode item = helper.pollLast();
                 layer.add(item.val);
-                if (item.left != null) {
-                    subHelper.add(item.left);
-                }
-                if (item.right != null) {
-                    subHelper.add(item.right);
+                if (left2right) {
+                    if (item.left != null) {
+                        subHelper.add(item.left);
+                    }
+                    if (item.right != null) {
+                        subHelper.add(item.right);
+                    }
+                } else {
+                    if (item.right != null) {
+                        subHelper.add(item.right);
+                    }
+                    if (item.left != null) {
+                        subHelper.add(item.left);
+                    }
                 }
             }
             result.add(layer);
+            // 翻转
+            left2right = !left2right;
             helper = subHelper;
             subHelper = new ArrayDeque<>();
         }
@@ -46,9 +57,9 @@ public class No102 {
 
     @Test(description = "")
     public void testo() throws Exception {
-        TreeNode head = createTree("3,9,20,null,2,15,7,4,5,6,7,3,2,4,1,2,2");
+        TreeNode head = createTree("1,2,3,4,5,6,7,8,9,10");
 
-        List<List<Integer>> mm = levelOrder(head);
+        List<List<Integer>> mm = zigzagLevelOrder(head);
         for (List<Integer> m : mm) {
             System.out.println(StringUtils.join(m, ","));
         }

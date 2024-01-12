@@ -41,7 +41,7 @@ public class tools {
                 nodeItem.left = left;
                 used[2 * i + 1] = left;
             }
-            if (2 * i + 2 < nodes.length && !nodes[2 * i + 1].equals("null")) {
+            if (2 * i + 2 < nodes.length && !nodes[2 * i + 2].equals("null")) {
                 TreeNode right = new TreeNode(Integer.parseInt(nodes[2 * i + 2]));
                 nodeItem.right = right;
                 used[2 * i + 2] = right;
