@@ -1,8 +1,10 @@
 package Lc.KrahetsInterview.BackTrack;
 
+import org.apache.commons.lang3.StringUtils;
+import org.testng.annotations.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -10,20 +12,17 @@ import java.util.List;
  **/
 public class No47 {
     List<List<Integer>> res;
-    HashSet<ArrayList<Integer>> helper;
 
     int[] used;
 
     private void backtrack(int[] nums, ArrayList<Integer> path) {
         if (path.size() == nums.length) {
             ArrayList<Integer> temp = new ArrayList<>(path);
-            if (helper.add(temp)) {
-                res.add(temp);
-            }
+            res.add(temp);
             return;
         }
         for (int i = 0; i < nums.length; i++) {
-            if (used[i] == 0) {
+            if (used[i] == 0 && !(i > 0 && nums[i - 1] == nums[i] && used[i - 1] == 1)) {
                 path.add(nums[i]);
                 used[i] = 1;
 
@@ -36,9 +35,9 @@ public class No47 {
     }
 
     public List<List<Integer>> permuteUnique(int[] nums) {
-        helper = new HashSet<>();
         used = new int[nums.length];
         Arrays.fill(used, 0);
+        Arrays.sort(nums);
 
         res = new ArrayList<>();
         ArrayList<Integer> path = new ArrayList<>();
@@ -47,5 +46,13 @@ public class No47 {
         return res;
     }
 
+    @Test(description = "")
+    public void test() throws Exception {
+        List<List<Integer>> x = permuteUnique(new int[]{1, 2, 1});
+        for (List<Integer> m : x) {
+            System.out.println(StringUtils.join(m, ","));
+        }
+
+    }
 }
 
