@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 /**
  * @see <a href="https://leetcode.com/problems/merge-sorted-array/"</a>
  **/
-public class No88 {
+public class No88_MergeTwoArrays {
 
     /**
      * 解题思路：因为两个数组都是升序的，所以进行倒排，从nums1的最后一位开始排起来
@@ -18,31 +18,17 @@ public class No88 {
      **/
 
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        if (n == 0) {
-            return;
-        }
-        if (m == 0) {
-            for (int i = 0; i < nums2.length; i++) {
-                nums1[i] = nums2[i];
-            }
-        }
-        int target = nums1.length - 1;
-        int p1 = m - 1;
-        int p2 = n - 1;
-        while (p1 >= 0 && p2 >= 0) {
-            if (nums1[p1] >= nums2[p2]) {
-                nums1[target] = nums1[p1];
-                p1--;
+        int i = m - 1, j = n - 1, k = m + n - 1;
+        while (k >= 0) {
+            int n1 = i < 0 ? Integer.MIN_VALUE : nums1[i];
+            int n2 = j < 0 ? Integer.MIN_VALUE : nums2[j];
+            if (n1 >= n2) {
+                nums1[k--] = n1;
+                i--;
             } else {
-                nums1[target] = nums2[p2];
-                p2--;
+                nums1[k--] = n2;
+                j--;
             }
-            target--;
-        }
-        while (p2 >= 0) {
-            nums1[target] = nums2[p2];
-            target--;
-            p2--;
         }
     }
 
