@@ -37,12 +37,8 @@ public class No62 {
         }
         int down = dp(m - 1, n);
         int right = dp(m, n - 1);
-        memo[m - 1][n] = down;
-        memo[m][n - 1] = right;
         memo[m][n] = down + right;
         return down + right;
-
-
     }
 
 
