@@ -1,8 +1,10 @@
 package DataStruct;
 
 import org.apache.commons.lang3.StringUtils;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import static DataStruct.BinaryTreePrinter.printTree;
@@ -52,6 +54,32 @@ public class tools {
         printTree(used[0]);
         return used[0];
     }
+
+    public static int[][] createMatrix(int m, int n, int... numbers) {
+        int[][] res = new int[m][n];
+        if (numbers.length != m * n) {
+            Assert.fail("参数不够m*n");
+        }
+        int count = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                res[i][j] = numbers[count];
+                count++;
+            }
+        }
+        return res;
+    }
+
+    public static void showMatrix(int[][] matrix) {
+        ArrayList<String> s = new ArrayList<>();
+        for (int[] row : matrix) {
+            s.add("[" + StringUtils.join(Arrays.stream(row).mapToObj(String::valueOf).toArray(String[]::new), ",") + "]");
+        }
+        System.out.println("[" + StringUtils.join(s, ",") + "]");
+        System.out.println("------");
+        System.out.println("[\n" + StringUtils.join(s, ",\n") + "\n]");
+    }
+
 
     @Test(description = "")
     public void testc() throws Exception {
