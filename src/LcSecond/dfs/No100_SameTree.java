@@ -1,4 +1,4 @@
-package Lc.dfs;
+package LcSecond.dfs;
 
 import DataStruct.TreeNode;
 
