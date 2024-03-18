@@ -8,19 +8,19 @@ import java.util.Deque;
  **/
 public class No116_PopulatingNextRightPointer {
 
-    public Node connect(Node root) {
+    public NodeR connect(NodeR root) {
         if (root == null) {
             return root;
         }
-        Node pre = null;
-        Deque<Node> helper = new ArrayDeque<>();
+        NodeR pre = null;
+        Deque<NodeR> helper = new ArrayDeque<>();
         helper.add(root);
         // 层序遍历，每层都指向下一个
         while (!helper.isEmpty()) {
             int layerCount = helper.size();
             pre = null;
             while (layerCount > 0) {
-                Node item = helper.pollFirst();
+                NodeR item = helper.pollFirst();
                 layerCount--;
                 if (pre == null) {
                     pre = item;
@@ -42,20 +42,20 @@ public class No116_PopulatingNextRightPointer {
 
 }
 
-class Node {
+class NodeR {
     public int val;
-    public Node left;
-    public Node right;
-    public Node next;
+    public NodeR left;
+    public NodeR right;
+    public NodeR next;
 
-    public Node() {
+    public NodeR() {
     }
 
-    public Node(int _val) {
+    public NodeR(int _val) {
         val = _val;
     }
 
-    public Node(int _val, Node _left, Node _right, Node _next) {
+    public NodeR(int _val, NodeR _left, NodeR _right, NodeR _next) {
         val = _val;
         left = _left;
         right = _right;
