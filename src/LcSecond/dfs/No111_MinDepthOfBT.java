@@ -44,6 +44,19 @@ public class No111_MinDepthOfBT {
         return result;
     }
 
+    public int minDepthRec(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        if (root.left == null) {
+            return 1 + minDepthRec(root.right);
+        }
+        if (root.right == null) {
+            return 1 + minDepthRec(root.left);
+        }
+        return Math.min(minDepthRec(root.left), minDepthRec(root.right)) + 1;
+    }
+
     public int minDepthRecursion(TreeNode root) {
         if (root != null && root.left == null && root.right == null) {
             // 到达叶子节点了才返回1
