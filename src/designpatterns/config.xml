@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<config>
+    <className>designpatterns.abstractfactory.AndroidSystemFactory</className>
+    <className2>designpatterns.abstractfactory.IOSSystemFactory</className2>
+</config>

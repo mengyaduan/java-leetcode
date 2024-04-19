@@ -1,0 +1,8 @@
+package designpatterns.factorymethod;
+
+public class GifFactory implements IPicFactory{
+    @Override
+    public IPic createPic() {
+        return new GifPic();
+    }
+}
