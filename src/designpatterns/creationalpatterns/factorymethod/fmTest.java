@@ -1,4 +1,4 @@
-package designpatterns.factorymethod;
+package designpatterns.creationalpatterns.factorymethod;
 
 import org.testng.annotations.Test;
 

@@ -1,4 +1,4 @@
-package designpatterns.singleton;
+package designpatterns.creationalpatterns.singleton;
 
 /**
  * 带有双重检验的懒汉单例模式

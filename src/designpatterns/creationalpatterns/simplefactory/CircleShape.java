@@ -1,4 +1,4 @@
-package designpatterns.simplefactory;
+package designpatterns.creationalpatterns.simplefactory;
 
 public class CircleShape implements IShape{
     @Override

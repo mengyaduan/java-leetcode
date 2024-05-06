@@ -1,4 +1,4 @@
-package designpatterns.portotype;
+package designpatterns.creationalpatterns.portotype;
 
 import lombok.Data;
 

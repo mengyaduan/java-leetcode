@@ -1,4 +1,4 @@
-package designpatterns.singleton;
+package designpatterns.creationalpatterns.singleton;
 
 /**
  * 饿汉式单例模式

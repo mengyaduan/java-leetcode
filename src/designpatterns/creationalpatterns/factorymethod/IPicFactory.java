@@ -1,4 +1,4 @@
-package designpatterns.factorymethod;
+package designpatterns.creationalpatterns.factorymethod;
 
 /**
  * 图片读取器工厂接口

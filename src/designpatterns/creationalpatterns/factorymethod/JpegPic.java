@@ -1,4 +1,4 @@
-package designpatterns.factorymethod;
+package designpatterns.creationalpatterns.factorymethod;
 
 public class JpegPic implements IPic{
 

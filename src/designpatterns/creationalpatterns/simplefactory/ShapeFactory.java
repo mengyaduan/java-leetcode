@@ -1,4 +1,4 @@
-package designpatterns.simplefactory;
+package designpatterns.creationalpatterns.simplefactory;
 
 public class ShapeFactory {
     public static IShape createShape(String type) {

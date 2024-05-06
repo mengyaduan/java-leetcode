@@ -1,4 +1,4 @@
-package designpatterns.simplefactory;
+package designpatterns.creationalpatterns.simplefactory;
 
 public interface IShape {
     void draw();

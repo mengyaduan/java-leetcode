@@ -1,4 +1,4 @@
-package designpatterns.factorymethod;
+package designpatterns.creationalpatterns.factorymethod;
 
 public class GifFactory implements IPicFactory{
     @Override

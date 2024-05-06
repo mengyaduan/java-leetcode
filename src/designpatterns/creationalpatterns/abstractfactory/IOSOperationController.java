@@ -1,4 +1,4 @@
-package designpatterns.abstractfactory;
+package designpatterns.creationalpatterns.abstractfactory;
 
 public class IOSOperationController implements IOperationController {
     @Override

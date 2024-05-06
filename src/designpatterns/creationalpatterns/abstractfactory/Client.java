@@ -1,4 +1,4 @@
-package designpatterns.abstractfactory;
+package designpatterns.creationalpatterns.abstractfactory;
 
 import designpatterns.XMLUtil;
 
