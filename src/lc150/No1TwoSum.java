@@ -8,7 +8,7 @@ import java.util.HashMap;
 /**
  * @see <a href="https://leetcode.cn/problems/two-sum/description/?envType=study-plan-v2&envId=top-interview-150"></a>
  */
-public class No2TwoSum {
+public class No1TwoSum {
 
     public int[] twoSum(int[] nums, int target) {
         int[][] helper = new int[nums.length][2];
