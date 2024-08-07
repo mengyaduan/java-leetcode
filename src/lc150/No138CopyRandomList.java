@@ -7,18 +7,18 @@ import java.util.HashMap;
  */
 public class No138CopyRandomList {
 
-    public Node copyRandomList(Node head) {
-        Node pivot = head;
-        Node preHead = new Node(-1);
-        Node cur = preHead;
-        HashMap<Node, Integer> origin = new HashMap<>();
-        HashMap<Integer, Node> helper = new HashMap<>();
+    public NodeRandom copyRandomList(NodeRandom head) {
+        NodeRandom pivot = head;
+        NodeRandom preHead = new NodeRandom(-1);
+        NodeRandom cur = preHead;
+        HashMap<NodeRandom, Integer> origin = new HashMap<>();
+        HashMap<Integer, NodeRandom> helper = new HashMap<>();
         // 循环一次，加入map
         int idx = 0;
         while (pivot != null) {
             // 将原始的数据进行编号
             origin.put(pivot, idx);
-            Node item = new Node(pivot.val);
+            NodeRandom item = new NodeRandom(pivot.val);
             // 将新增的进行编号
             helper.put(idx, item);
             cur.next = item;
@@ -43,12 +43,12 @@ public class No138CopyRandomList {
 
 }
 
-class Node {
+class NodeRandom {
     int val;
-    Node next;
-    Node random;
+    NodeRandom next;
+    NodeRandom random;
 
-    public Node(int val) {
+    public NodeRandom(int val) {
         this.val = val;
         this.next = null;
         this.random = null;
