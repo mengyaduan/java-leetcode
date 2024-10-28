@@ -80,6 +80,15 @@ public class tools {
         System.out.println("[\n" + StringUtils.join(s, ",\n") + "\n]");
     }
 
+    public static void printIntArray(int[] arr) {
+        System.out.println(StringUtils.join(Arrays.stream(arr).mapToObj(String::valueOf).toArray(String[]::new), ","));
+    }
+
+    public static void printIntArray(int[][] arr) {
+        for (int[] row : arr) {
+            printIntArray(row);
+        }
+    }
 
     @Test(description = "")
     public void testc() throws Exception {
