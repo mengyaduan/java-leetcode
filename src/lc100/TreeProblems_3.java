@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import static DataStruct.BinaryTreePrinter.printTree;
 import static DataStruct.tools.createTree;
 
-public class TreeProblems_2 {
+public class TreeProblems_3 {
 
     /**
      * 226
@@ -44,5 +44,34 @@ public class TreeProblems_2 {
         }
     }
 
+    int diameter = 0;
+
+    /**
+     * 543
+     */
+    public int diameterOfBinaryTree(TreeNode root) {
+        diameter = 0;
+        maxDepth(root);
+        return diameter - 1;
+    }
+
+    private int maxDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftLen = maxDepth(root.left);
+        int rightLen = maxDepth(root.right);
+        diameter = Math.max(diameter, leftLen + rightLen + 1);
+        return Math.max(leftLen, rightLen) + 1;
+    }
+
+    @Test(description = "")
+    public void test() throws Exception {
+        TreeNode root = createTree("1,2,3,4,5");
+        System.out.println(diameterOfBinaryTree(root));
+        root = createTree("1,2");
+        System.out.println(diameterOfBinaryTree(root));
+
+    }
 
 }
