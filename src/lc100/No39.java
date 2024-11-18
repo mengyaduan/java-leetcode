@@ -1,11 +1,11 @@
-package Lc;
+package lc100;
 
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class No39CombinationSum {
+public class No39 {
 
     List<List<Integer>> result;
 
