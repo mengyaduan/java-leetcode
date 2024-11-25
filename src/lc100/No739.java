@@ -1,10 +1,10 @@
-package Lc;
+package lc100;
 
 import org.testng.annotations.Test;
 
 import static DataStruct.tools.printIntArray;
 
-public class No739DailyTemperatures {
+public class No739 {
 
     public int[] dailyTemperatures(int[] temperatures) {
         int[] result = new int[temperatures.length];
