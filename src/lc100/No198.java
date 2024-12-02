@@ -1,9 +1,9 @@
-package Lc;
+package lc100;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class No198Rob {
+public class No198 {
 
     public int rob(int[] nums) {
         int[][] dpTable = new int[nums.length][2];
