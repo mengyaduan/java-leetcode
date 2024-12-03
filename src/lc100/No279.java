@@ -8,18 +8,15 @@ import java.util.ArrayList;
 
 public class No279 {
 
-    int[] memo;
-
     public int numSquares(int n) {
-        int[] f = new int[n + 1];
+        int[] memo = new int[n + 1];
         for (int i = 1; i <= n; i++) {
-            int result = Integer.MAX_VALUE;
+            memo[i] = i;
             for (int j = 1; j * j <= i; j++) {
-                result = Math.min(result, f[i - j * j]);
+                memo[i] = Math.min(memo[i], 1 + memo[i - j * j]);
             }
-            f[i] = result + 1;
         }
-        return f[n];
+        return memo[n];
     }
 
 
