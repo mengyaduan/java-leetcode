@@ -6,9 +6,9 @@ public class DoubleListNode {
     public int key;
     public int value;
 
-    public DoubleListNode(int x, int y) {
-        key = x;
-        value = y;
+    public DoubleListNode(int key, int value) {
+        this.key = key;
+        this.value = value;
         next = null;
         pre = null;
     }

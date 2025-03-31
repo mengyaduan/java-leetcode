@@ -4,6 +4,9 @@ import org.testng.annotations.Test;
 
 import java.util.*;
 
+/**
+ * LRC030
+ */
 public class RandomizedSet {
 
     HashMap<Integer, Integer> map;

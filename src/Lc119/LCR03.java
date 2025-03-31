@@ -1,5 +1,5 @@
 package Lc119;
 
-public class LCR02 {
+public class LCR03 {
     
 }
