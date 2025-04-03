@@ -8,5 +8,4 @@ import static DataStruct.tools.createTree;
 
 public class LCR04 {
 
- 
 }
