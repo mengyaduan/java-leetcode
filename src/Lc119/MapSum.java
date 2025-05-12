@@ -3,6 +3,9 @@ package Lc119;
 import DataStruct.TrieNode;
 import org.testng.annotations.Test;
 
+/**
+ * LCR 066
+ */
 public class MapSum {
 
     NodeWithNum root;
