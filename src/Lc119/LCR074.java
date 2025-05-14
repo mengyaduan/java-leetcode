@@ -28,12 +28,7 @@ public class LCR074 {
             }
         }
         result.add(new int[]{left, right});
-        int[][] res = new int[result.size()][2];
-        for (int i = 0; i < res.length; i++) {
-            res[i][0] = result.get(i)[0];
-            res[i][1] = result.get(i)[1];
-        }
-        return res;
+        return result.toArray(new int[0][]);
     }
 
     @Test(description = "")
