@@ -18,10 +18,10 @@ public class LCR071 {
 
     public int pickIndex() {
         Random random = new Random();
-        int target = random.nextInt(sum);
+        int target = random.nextInt(sum) + 1;
         int l = 0, r = nums.length - 1;
-        // 1,2,3,4,5
-        // 1,3,6,10,15
+        // 1,2,3,4,5;3,14,1,7
+        // 1,3,6,10,15;3,17,18,25
         // 找到第一个大于等于target的数字，返回其idx
 
         int result = -1;
