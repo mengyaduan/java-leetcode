@@ -1,7 +1,7 @@
 package LC100Again;
 
 
-public class Lc06 {
+public class Lc07 {
 
 
 
